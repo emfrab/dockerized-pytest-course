@@ -25,7 +25,8 @@ def process_data(city_list_location):
 
     yield _specify_type
 
-@pytest.mark.parametrized("country,stat,expected" [
+
+@pytest.mark.parametrize("country,stat,expected", [
     ('Andorra', 'Mean', 1641.42),
     ('Andorra', 'Median', 1538.02),
     ('Argentina', 'Median', 125.0)
@@ -50,4 +51,4 @@ def test_csv_writer(process_data, country, stat, expected):
     data_aggregator.csv_writer(andorran_median_res, output_location)
 
     res = output_location.getvalue().strip('\r\n')
-    assert res == 'Country,Median\r\nAndorra,1538.02'
+    assert res == f'Country,{stat}\r\n{country},{expected}'
