@@ -30,8 +30,8 @@ def process_data(city_list_location):
     ('Andorra', 'Median', 1538.02),
     ('Argentina', 'Median', 125.0)
 ])
-def test_atitude_stat_per_country(process_data):
+def test_atitude_stat_per_country(process_data, country, stat, expected):
     data = process_data(file_name_or_type="clean_map.csv")
     andorran_avg_res = data_aggregator.atitude_stat_per_country(data, country, stat)
 
-    assert andorran_avg_res == {'country': country, stat: expected}
+    assert andorran_avg_res == {'Country': country, stat: expected}
